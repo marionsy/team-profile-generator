@@ -10,8 +10,8 @@ describe("Employee", () => {
 
     it("should set an employee name", () => {
         const name = "name";
-        const str = new Employee(name);
-        expect(str.name).toEqual(name);
+        const e = new Employee(name);
+        expect(e.name).toEqual(name);
     });
 
     it("should set an employee id", () => {
