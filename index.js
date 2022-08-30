@@ -1,9 +1,12 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+
 const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+
+const {generateHtml, createManagerHtml, createEngineersHtml, createInternsHtml} = require("./src/team.js");
 
 
 const questions = {
@@ -111,6 +114,14 @@ function addMember(manager, engineers, interns) {
             console.log("Managers:" + JSON.stringify(manager));
             console.log("Engineers:" + JSON.stringify(engineers));
             console.log("Interns:" + JSON.stringify(interns));
+
+            const managerHtml = createManagerHtml(manager);
+            const engineersHtml = createEngineersHtml(engineers);
+            const internsHtml = createInternsHtml(interns);
+
+            fs.writeFile("dist/team.html", generateHtml(managerHtml, engineersHtml, internsHtml), (err) =>
+                err ? console.error(err) : console.log("Created team HTML at dist/team.html!")
+            );
         }
     })
 }
