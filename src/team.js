@@ -51,7 +51,7 @@ const createInternsHtml = (interns) => {
                         <div class="card-body">
                             <ul class="list-group">
                                 <li class="list-group-item">ID: ${intern.id}</li>
-                                <li class="list-group-item">Email: <a href="mailto:${intern.email}"> ${intern.email}</li>
+                                <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
                                 <li class="list-group-item">School: ${intern.school}</li>
                             </ul>
                         </div>
@@ -63,7 +63,7 @@ const createInternsHtml = (interns) => {
 }
 
 const generateHtml = (managerHtml, engineersHtml, internsHtml) => {
-    return ` <!DOCTYPE html>
+    return `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -102,8 +102,7 @@ const generateHtml = (managerHtml, engineersHtml, internsHtml) => {
         crossorigin="anonymous"></script>
 </body>
 
-</html>
-    
+</html>    
     `;
 }
 

@@ -6,7 +6,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-const {generateHtml, createManagerHtml, createEngineersHtml, createInternsHtml} = require("./src/team.js");
+const { generateHtml, createManagerHtml, createEngineersHtml, createInternsHtml } = require("./src/team.js");
 
 
 const questions = {
@@ -14,22 +14,50 @@ const questions = {
         {
             name: "managerName",
             type: "input",
-            message: "What is the manager's name?"
+            message: "What is the manager's name?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the manager's name."
+                }
+            }
         },
         {
             name: "managerId",
             type: "input",
-            message: "What is the manager's ID?"
+            message: "What is the manager's ID?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the manager's ID."
+                }
+            }
         },
         {
             name: "managerEmail",
             type: "input",
-            message: "What is the manager's email address?"
+            message: "What is the manager's email address?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the manager's email address."
+                }
+            }
         },
         {
             name: "officeNumber",
             type: "input",
-            message: "What is the manager's office number?"
+            message: "What is the manager's office number?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the manager's office number."
+                }
+            }
         }
     ],
 
@@ -37,22 +65,50 @@ const questions = {
         {
             name: "engineerName",
             type: "input",
-            message: "What is the engineer's name?"
+            message: "What is the engineer's name?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the engineer's name."
+                }
+            }
         },
         {
             name: "engineerId",
             type: "input",
-            message: "What is the engineer's ID?"
+            message: "What is the engineer's ID?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the engineer's ID."
+                }
+            }
         },
         {
             name: "engineerEmail",
             type: "input",
-            message: "What is the engineer's email address?"
+            message: "What is the engineer's email address?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the engineer's email."
+                }
+            }
         },
         {
             name: "github",
             type: "input",
-            message: "What is the engineer's GitHub username?"
+            message: "What is the engineer's GitHub username?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the engineer's GitHub."
+                }
+            }
         }
     ],
 
@@ -60,22 +116,50 @@ const questions = {
         {
             name: "internName",
             type: "input",
-            message: "What is the intern's name?"
+            message: "What is the intern's name?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the intern's name."
+                }
+            }
         },
         {
             name: "internId",
             type: "input",
-            message: "What is the intern's ID?"
+            message: "What is the intern's ID?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the intern's ID."
+                }
+            }
         },
         {
             name: "internEmail",
             type: "input",
-            message: "What is the intern's email address?"
+            message: "What is the intern's email address?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the intern's email."
+                }
+            }
         },
         {
             name: "school",
             type: "input",
-            message: "What school does the intern go to?"
+            message: "What school does the intern go to?",
+            validate: (value) => {
+                if (value) {
+                    return true
+                } else {
+                    return "Please enter the intern's school."
+                }
+            }
         }
     ],
 
@@ -89,7 +173,7 @@ const questions = {
     ]
 };
 
-function start() {
+function createTeam() {
     inquirer.prompt(questions.manager).then(data => {
         const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber);
         addMember(manager, [], []);
@@ -120,10 +204,10 @@ function addMember(manager, engineers, interns) {
             const internsHtml = createInternsHtml(interns);
 
             fs.writeFile("dist/team.html", generateHtml(managerHtml, engineersHtml, internsHtml), (err) =>
-                err ? console.error(err) : console.log("Created team HTML at dist/team.html!")
+                err ? console.error(err) : console.log("Team created!")
             );
         }
     })
 }
 
-start();
+createTeam();
