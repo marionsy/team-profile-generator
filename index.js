@@ -8,7 +8,8 @@ const Intern = require("./lib/Intern");
 
 const { generateHtml, createManagerHtml, createEngineersHtml, createInternsHtml } = require("./src/team.js");
 
-
+// Array of questions to retrieve user input to create objects for a team with one manager, engineers and interns.
+// User input validation included
 const questions = {
     manager: [
         {
@@ -173,6 +174,7 @@ const questions = {
     ]
 };
 
+// Initialize's the app and prompt users with manager questions
 function createTeam() {
     inquirer.prompt(questions.manager).then(data => {
         const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber);
@@ -180,6 +182,7 @@ function createTeam() {
     });
 }
 
+// Adds engineers and interns to team using the addEmployee object
 function addMember(manager, engineers, interns) {
     inquirer.prompt(questions.addEmployee).then(data => {
         if (data.addEmployee === "Add Engineer") {
@@ -195,10 +198,7 @@ function addMember(manager, engineers, interns) {
                 addMember(manager, engineers, interns);
             })
         } else {
-            console.log("Managers:" + JSON.stringify(manager));
-            console.log("Engineers:" + JSON.stringify(engineers));
-            console.log("Interns:" + JSON.stringify(interns));
-
+            // If user is done creating the team, the team HTML will be generated
             const managerHtml = createManagerHtml(manager);
             const engineersHtml = createEngineersHtml(engineers);
             const internsHtml = createInternsHtml(interns);
@@ -210,4 +210,5 @@ function addMember(manager, engineers, interns) {
     })
 }
 
+// Calls function to start app
 createTeam();

@@ -1,3 +1,4 @@
+// Function to return manager card
 const createManagerHtml = (manager) => {
     return `
     <div class="col-3 card mx-3 mb-5" style="box-shadow: 10px 10px 5px #aaaaaa;">
@@ -17,6 +18,7 @@ const createManagerHtml = (manager) => {
     `;
 }
 
+// Function to return engineer cards
 const createEngineersHtml = (engineers) => {
     return engineers.map(engineer => {
         return `
@@ -40,6 +42,7 @@ const createEngineersHtml = (engineers) => {
     .join("");
 }
 
+// Function to return intern card
 const createInternsHtml = (interns) => {
     return interns.map(intern => {
         return `
@@ -62,6 +65,7 @@ const createInternsHtml = (interns) => {
     .join("");
 }
 
+// Function to generate team HTML page
 const generateHtml = (managerHtml, engineersHtml, internsHtml) => {
     return `<!DOCTYPE html>
 <html lang="en">
