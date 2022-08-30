@@ -25,7 +25,7 @@
      * Manager- office number
      * Engineer- GitHub
      * Intern- school
-   * When the user is done building their team, the team.html page will be generated in the dist. folder.
+   * When the user is done building their team, the team.html page will be generated in the /dist folder.
    * The generated html page has functional email and GitHub links.
   
   ## Screenshot
